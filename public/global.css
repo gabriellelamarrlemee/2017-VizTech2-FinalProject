@@ -16,6 +16,13 @@ text{
 	min-height:500px;
 }
 
+.control{
+	height:100px;
+	position:relative;
+	padding:20px 100px 0;
+}
+	.control .navbar{background:white;}
+
 .stn .start{
 	fill:#f15a29;
 }
@@ -26,7 +33,6 @@ text{
 	fill-opacity:1;
 }
 
-
 svg {
   font: 10px sans-serif;
 }
@@ -34,7 +40,7 @@ svg {
 .background path {
   fill: none;
   stroke: #ccc;
-  stroke-opacity: .4;
+  stroke-opacity: .6;
   shape-rendering: crispEdges;
 }
 
