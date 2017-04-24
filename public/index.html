@@ -2,51 +2,215 @@
 <html>
 	<head>
 		<meta charset='utf-8'>
+		<script src="https://use.typekit.net/adu0wxt.js"></script>
+		<script>try{Typekit.load({ async: true });}catch(e){}</script>
 		<link href='./lib/bootstrap-3.3.7-dist/css/bootstrap.min.css' rel='stylesheet' />
 		<link href='global.css' rel='stylesheet' />
 	</head>
 	<body>
 		<div class='container'>
-			<h1>Final Project Sketches</h1>
-			<div class='control'>
-				<nav class='navbar navbar-default'>
-			      <ul class="nav navbar-nav">
-			        <!-- <li class="dropdown">
-			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">School Name <span class="caret"></span></a>
-			          <ul class="dropdown-menu dropdown-menu-station" id="school">
-			            <li><a href="#">Dropdown item</a></li>
-			          </ul> -->
-			        </li>
-			        <li class="dropdown">
-			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">School Type <span class="caret"></span></a>
-			          <ul class="dropdown-menu dropdown-menu-station" id="school-type">
-			          </ul>
-			        </li>
-							<!-- <li class="dropdown">
-			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">School Rating <span class="caret"></span></a>
-			          <ul class="dropdown-menu dropdown-menu-station" id="school-rating">
-			          </ul>
-			        </li>
-							<li class="dropdown">
-			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">School Status <span class="caret"></span></a>
-			          <ul class="dropdown-menu dropdown-menu-station" id="school-status">
-			          </ul>
-			        </li> -->
-			      </ul>
-				</nav>
+
+			<div class="custom-tooltip">
+				<p class="name"></p>
+				<p class="grades"></p>
+				<p class="type"></p>
+				<p class="rating"></p>
+				<p class="probation"></p>
+				<p class="black"></p>
+				<p class="hispanic"></p>
+				<p class="white"></p>
+				<p class="other_pcts"></p>
 			</div>
-			<div class="plot" id="plot1"></div>
+
+			<div class="row">
+			<div class="col-sm-2 col-md-2 col-lg-2"></div>
+			<div class="col-sm-8 col-md-8 col-lg-8">
+				<h1>Separate and Unequal: A look at enduring and increasing segregation in Chicago public schools</h1>
+			</div>
+			<div class="col-sm-2 col-md-2 col-lg-2"></div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-2 col-md-2 col-lg-2"></div>
+				<div class="col-sm-8 col-md-8 col-lg-8">
+					<p class="introduction">
+						Over six decades ago, the Supreme Court ruled in Brown v. Board that "separate educational facilities are inherently unequal." And yet, after the minimal efforts of the 70s,
+						most school districts were released from court supervision in the early 1990s and today, the proportion of black students at majority-white schools is the lowest its ever been since 1968.
+					</p>
+					<p class="introduction">
+						Integration is the one school improvement strategy that has shown to cut the achievement gap between minority students and white students in half.
+						Research has shown "consistently and unambiguously" that students in integrated schools have better test scores and higher college attendance rates.
+						And yet education advocates seem to be always seeking out alternatives that either don't work or deepen segregation by race and socioeconomic status.
+					</p>
+					<p class="introduction">
+						As one of the most segregated cities in the country, Chicago has a long history with this issue. In the early 1900s, black families began to move to
+						Chicago, and by the 1930s, three quarters of the city was banned from selling property to them. This was the beginning of many practices that perpetuated racial separation.
+						Years later, after white flight to the suburbs and the migration of minorities to the city, Chicago's main racial groups, black, hispanic, and white each make up one third of the population.
+
+					</p>
+				</div>
+				<div class="col-sm-2 col-md-2 col-lg-2"></div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-3 col-md-3 col-lg-3"></div>
+				<div class="col-sm-2 col-md-2 col-lg-2">
+					<h3 class="introduction-2">33% white</h3>
+				</div>
+				<div class="col-sm-2 col-md-2 col-lg-2">
+					<h3 class="introduction-2">29% black</h3>
+				</div>
+				<div class="col-sm-2 col-md-2 col-lg-2">
+					<h3 class="introduction-2">32% hispanic</h3>
+				</div>
+				<div class="col-sm-3 col-md-3 col-lg-3"></div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-2 col-md-2 col-lg-2"></div>
+				<div class="col-sm-8 col-md-8 col-lg-8">
+					<p class="introduction-3">White families that stayed in the city tend to send their kids to private or parochial schools, further decreasing
+						opportunities for integration. Currently the Chicago Public School system is 9% white, 40% black and 46% hispanic.</p>
+				</div>
+				<div class="col-sm-2 col-md-2 col-lg-2"></div>
+			</div>
+
+			<div class="row" id="trigger1">
+				<div class="col-sm-3 col-md-3 col-lg-3"></div>
+				<div class="col-sm-2 col-md-2 col-lg-2">
+					<h3 class="introduction-4">9% white</h3>
+				</div>
+				<div class="col-sm-2 col-md-2 col-lg-2">
+					<h3 class="introduction-4">40% black</h3>
+				</div>
+				<div class="col-sm-2 col-md-2 col-lg-2">
+					<h3 class="introduction-4">46% hispanic</h3>
+				</div>
+				<div class="col-sm-3 col-md-3 col-lg-3"></div>
+			</div>
+
+			<div class="row">
+
+			<div class="col-sm-7 col-md-7 col-lg-7">
+				<div class="plot affix-top" id="plot1" data-spy="affix"></div>
+			</div>
+			<div class="plot col-sm-1 col-md-1 col-lg-1" id="column-break"></div>
+
+			<div class="col-sm-4 col-md-4 col-lg-4" id="sidebar">
+				<div class="intro">
+					<p></p>
+					<p id='description'>Each line on the left represents a school in the Chicago Public School system and that school's racial makeup. The dotted black line shows Chicago's city-wide demographic makeup.</p>
+					<p id='trigger2'>If we look at schools by grade level, we can see that there are slight differences.
+						<span class='elementary highlight'>Elementary Schools</span> and <span class='middle highlight'>middle schools</span> tend to have a higher percentage of white students at 9%</p>
+					<p id='trigger4'>But for <span class='high highlight'>high schools,</span> that number drops down to 4% as parents start sending their children to private schools.</p>
+					<p id='trigger5'><span class='non-neighborhood highlight'>Non-neighborhood schools</span> such as charter schools and magnet schools were meant to improve educational opportunity
+						by providing an alternative. What they end up doing is exacerbating the segregation not only along racial lines but also along socioeconomic status and student performance.
+						Many of these schools require test scores for admittance and children from families with a higher socioeconomic status tend to perform better on tests.</p>
+					<p id='trigger6'>As expected, <span class='neighborhood highlight'>neighborhood schools</span> have slightly more low-income students than neighborhood schools at 87% compared to 82%.</p>
+					<p id='trigger7'>The school district assigns school quality ratings on a scale of 1+ – 3 with 1 being the best. These are based on several factors that include test performance, attendance, and student growth.<br /><br />
+					<span class='level1plus highlight'>Level 1+</span> is the highest level and those schools also have the highest percentage of white students at 15% and the lowest percentages of hispanic and black students.</p>
+					<p id='trigger8'>The percentages of white students drops quickly after level 1+. <span class='level2plus highlight'>Level 2</span> schools, the second lowest level, have on average 2% white students and 72% black students.</p>
+					<p id='trigger9'>The quality ratings correspond to the school's probation status.
+						Schools in <span class='good highlight'>good standing</span> are meeting or exceeding the minimum performance expectations.</p>
+					<p id='trigger10'>Schools with a level 3 require <span class='intensive highlight'>intensive support</span> and this status can trigger school closure.</p>
+					<p id='trigger11'>Another interesting aspect of these schools is the size. Many of the <span class='XL highlight'>extra-large schools,</span> those with over 900 students, have a high percentage of hispanic students.</p>
+					<p id='trigger12'>Segregation is not just a matter of geographic location. Ogden is one of the best public schools in the district. It also tracks the most closely to the city-wide demographics due to a relatively very high percentage fo white students.
+						<span class='distanceA highlight'>Just 7 blocks away, </span> Jenner sits where the Cabrini-Green public housing development once was and is under intensive support and 98% black.</p>
+					<p id='trigger13'><span class='distanceB highlight'>New school construction</span> also works to engrain segregation. Lincoln Elementary, in one of the wealthiest areas of the city with only 15% low income students, is expecting a $19 million addition.
+					Only a mile and a half away, Manierre Elementary shares a boundary but is 96% black and 98% low income, with its students coming primarily from public housing.</p>
+				</div>
+				<p id='trigger15'><em>Toggle through the buttons below to explore.</em></p>
+				<h5>School Type:</h5>
+				<div class="btn-group" data-toggle="buttons">
+					<label class="btn btn-primary btn-sm school-type-btn">
+						<div id="Charter"><input type="checkbox" name="school-type"> Charter</div>
+					</label>
+					<label class="btn btn-primary btn-sm school-type-btn">
+						<div id="Neighborhood"><input type="checkbox" name="school-type"> Neighborhood</div>
+					</label>
+					<label class="btn btn-primary btn-sm school-type-btn">
+						<div id="Magnet"><input type="checkbox" name="school-type"> Magnet</div>
+					</label>
+				</div>
+				<h5>Grade Levels:</h5>
+				<div class="btn-group" data-toggle="buttons">
+					<label class="btn btn-primary btn-sm grade-level-btn">
+						<div id="elementary school"><input type="checkbox" name="grade-level"> Elementary (PK-5)</div>
+					</label>
+					<label class="btn btn-primary btn-sm grade-level-btn">
+						<div id="middle school"><input type="checkbox" name="grade-level"> Middle (6-8)</div>
+					</label>
+					<label class="btn btn-primary btn-sm grade-level-btn">
+						<div id="high school"><input type="checkbox" name="grade-level"> High (9-12)</div>
+					</label>
+				</div>
+				<h5>School Rating:</h5>
+				<div class="btn-group" data-toggle="buttons">
+					<label class="btn btn-primary btn-sm school-rating-btn">
+						<div id="Level 1+"><input type="checkbox" name="school-rating"> Level 1+</div>
+					</label>
+					<label class="btn btn-primary btn-sm school-rating-btn">
+						<div id="Level 1"><input type="checkbox" name="school-rating"> Level 1</div>
+					</label>
+					<label class="btn btn-primary btn-sm school-rating-btn">
+						<div id="Level 2+"><input type="checkbox" name="school-rating"> Level 2+</div>
+					</label>
+					<label class="btn btn-primary btn-sm school-rating-btn">
+						<div id="Level 2"><input type="checkbox" name="school-rating"> Level 2</div>
+					</label>
+					<label class="btn btn-primary btn-sm school-rating-btn">
+						<div id="Level 3"><input type="checkbox" name="school-rating"> Level 3</div>
+					</label>
+				</div>
+				<h5>Probation Status:</h5>
+				<div class="btn-group" data-toggle="buttons">
+					<label class="btn btn-primary btn-sm probation-status-btn">
+						<div id="Good Standing"><input type="checkbox" name="probation-status"> Good Standing</div>
+					</label>
+					<label class="btn btn-primary btn-sm probation-status-btn">
+						<div id="Provisiol Support"><input type="checkbox" name="probation-status"> Provisiol Support</div>
+					</label>
+					<label class="btn btn-primary btn-sm probation-status-btn">
+						<div id="Intensive Support"><input type="checkbox" name="probation-status"> Intensive Support</div>
+					</label>
+				</div>
+				<h5>School Size:</h5>
+				<div class="btn-group last" data-toggle="buttons">
+					<label class="btn btn-primary btn-sm school-size-btn small">
+						<div id="small"><input type="checkbox" name="school-size"> Small</div>
+					</label>
+					<label class="btn btn-primary btn-sm school-size-btn medium">
+						<div id="medium"><input type="checkbox" name="school-size"> Medium</div>
+					</label>
+					<label class="btn btn-primary btn-sm school-size-btn large">
+						<div id="large"><input type="checkbox" name="school-size"> Large</div>
+					</label>
+					<label class="btn btn-primary btn-sm school-size-btn extra-large">
+						<div id="extra-large"><input type="checkbox" name="school-size"> Extra-Large</div>
+					</label>
+				</div>
+				<p></p>
+
+			</div>
+			</div>
+
 		</div>
 		<script src='./lib/d3.js' type='text/javascript'></script>
 		<script src='./lib/crossfilter/crossfilter.js'></script>
 		<script src='./lib/jquery/jquery-1.12.4.min.js'></script>
+		<script src='./lib/scrollmagic/minified/ScrollMagic.min.js'></script>
 		<script src='./lib/bootstrap-3.3.7-dist/js/bootstrap.min.js'></script>
 
 		<!--include modules-->
 
 		<script src='./modules/bumpchart.js'></script>
-		<script src='./modules/piechart.js'></script>
-		<script src='./modules/menu.js'></script>
+		<!-- <script src='./modules/treemap.js'></script> -->
+		<script src='./modules/menu_name.js'></script>
+		<script src='./modules/menu_type.js'></script>
+		<script src='./modules/menu_rating.js'></script>
+		<script src='./modules/menu_probation.js'></script>
+		<script src='./modules/menu_size.js'></script>
+		<script src='./modules/menu_grades.js'></script>
 		<script src='script.js' type='text/javascript'></script>
 	</body>
 </html>

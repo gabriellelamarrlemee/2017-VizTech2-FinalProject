@@ -1,53 +1,103 @@
-html,body,div,h1,h2,h3,p,span{
+html,body,div,h1,h2,h3,h5,p,span{
 	margin:0;
 	padding:0;
 }
 
+.affix {
+  top: 20px;
+}
+
+p{
+	padding-bottom:30px;
+}
+
+.intro p{
+	padding-bottom:80%;
+	opacity:0;
+}
+
+.custom-tooltip p{
+	padding-bottom:0;
+	font-size:12px;
+	fill-opacity:.5;
+	font-family:"helvetica", sans-serif;
+	font-style:normal;
+	font-weight:300;
+}
+
+.last{
+	padding-bottom:100px;
+}
+
+html,body{
+	height:100%;
+}
+
+.container{
+	padding-top:30px;
+}
+
+.row{
+	padding-bottom:30px;
+}
+
 body{
 	background:rgb(252,252,252);
+	font-family:"utopia-std", serif;
+	font-style:normal;
+	font-weight:400;
 }
 
 text{
 	font-size:12px;
 	fill-opacity:.5;
+	font-family:"helvetica", sans-serif;
+	font-style:normal;
+	font-weight:300;
 }
+
+h1{
+	padding-bottom:30px;
+	font-family:"utopia-std", serif;
+	font-style:normal;
+	font-weight:700;
+}
+
+h5{
+
+}
+
 
 .plot{
-	min-height:500px;
-}
-
-.control{
-	height:100px;
-	position:relative;
-	padding:20px 100px 0;
-}
-	.control .navbar{background:white;}
-
-.stn .start{
-	fill:#f15a29;
-}
-.stn .end{
-	fill:#03afeb;
-}
-.stn:hover text{
-	fill-opacity:1;
+	height:90vh;
+	font-family:"helvetica", sans-serif;
+	font-style:normal;
+	font-weight:300;
 }
 
 svg {
   font: 10px sans-serif;
 }
 
-.background path {
+path {
   fill: none;
-  stroke: #ccc;
-  stroke-opacity: .6;
   shape-rendering: crispEdges;
 }
 
+.background path {
+  stroke: #ccc;
+  stroke-opacity: .1;
+}
+
 .foreground path {
-  fill: none;
-  stroke: steelblue;
   stroke-opacity: .7;
+}
+
+.city_average-line,
+.school_average-line,
+.country_average-line {
+  fill: none;
+  shape-rendering: crispEdges;
 }
 
 .brush .extent {
@@ -64,4 +114,98 @@ svg {
 
 .axis text {
   text-shadow: 0 1px 0 #fff;
+	font-size:12px;
+	font-family: "helvetica", sans-serif;
+	font-style: normal;
+	font-weight: 300;
+}
+
+.btn-group{
+	padding-bottom:10px;
+	font-family: "helvetica", sans-serif;
+	font-style: normal;
+	font-weight: 300;
+	outline:none;
+}
+
+.btn{
+	outline:none !important;
+}
+
+*:focus{
+	border: none !important;
+	outline: 0 !important;
+}
+
+.btn-primary,
+.btn-primary:focus,
+.btn-primary:visited {
+  border-color: #ffffff !important;
+  background: #dddddd !important;
+  color: #000000 !important;
+  border-radius: 0px !important;
+	outline:none !important;
+}
+
+.btn-primary:hover {
+  border-color: #ffffff !important;
+  background-color: #cccccc !important;
+  color: #000000 !important;
+	outline:none !important;
+}
+
+.btn-primary:active,
+.btn-primary.active,
+.btn-primary:active:hover,
+.btn-primary.active:hover  {
+  border-color: #ffffff !important;
+  background-color: #707070 !important;
+  color: #ffffff !important;
+	outline:none !important;
+}
+
+.small, .small:focus, .small:visited {
+  background: #e3d5b0 !important;
+}
+.small:active, .small.active, .small:active:hover, .small.active:hover  {
+  background-color: #c1a64f !important;
+}
+
+.medium, .medium:focus, .medium:visited {
+  background: #b7c8e2 !important;
+}
+.medium:active, .medium.active, .medium:active:hover, .medium.active:hover  {
+  background-color: #598dc1 !important;
+}
+
+.large, .large:focus, .large:visited {
+  background: #c9e7dd !important;
+}
+.large:active, .large.active, .large:active:hover, .large.active:hover  {
+  background-color: #7bcab3 !important;
+}
+
+.extra-large, .extra-large:focus, .extra-large:visited {
+  background: #c7b3d7 !important;
+}
+.extra-large:active, .extra-large.active, .extra-large:active:hover, .extra-large.active:hover  {
+  background-color: #8c5ea7 !important;
+}
+
+
+.custom-tooltip{
+	position: absolute;
+	background-color: #ffffff;
+	padding:20px;
+	box-shadow: 6px 6px 6px #cccccc;
+	opacity:0;
+	z-index: 1;
+}
+
+.rowHeader{
+	cursor:move;
+}
+
+#sidebar{
+	padding-top:30px;
 }
