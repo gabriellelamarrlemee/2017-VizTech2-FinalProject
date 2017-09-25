@@ -2,7 +2,7 @@ var dispatcher = d3.dispatch('update');
 
 //import data
 d3.queue()
-	.defer(d3.csv,'./data/schools.csv',parseData)
+	.defer(d3.csv,'data/schools.csv',parseData)
 	.await(dataLoaded);
 
 	function dataLoaded(err, data){
