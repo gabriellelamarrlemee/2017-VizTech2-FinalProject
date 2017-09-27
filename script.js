@@ -2,7 +2,7 @@ var dispatcher = d3.dispatch('update');
 
 //import data
 d3.queue()
-	.defer(d3.csv,'data/schools.csv',parseData)
+	.defer(d3.csv,'./data/schools.csv',parseData)
 	.await(dataLoaded);
 
 	function dataLoaded(err, data){
@@ -14,10 +14,7 @@ d3.queue()
 		var schoolsBySize = cf.dimension(function(d){return d.students_cat});
 		var schoolsByGrades = cf.dimension(function(d){return d.grades_cat}, true);
 
-
 		var cfData = schoolsByName.top(Infinity);
-
-		//console.log(schoolsBySize.top(10));
 
 		//benchmark numbers **TO DO: Add in a median line**
 		var avgStudents = d3.mean(data,function(d) {return d.students}),
@@ -38,7 +35,7 @@ d3.queue()
 
 		//d3.select('#plot1').datum(cfData).call(bumpchart);
 
-		var sceneA = new ScrollMagic.Scene({ triggerElement:'#trigger1', offset: -(document.documentElement.clientHeight/1.3), triggerHook: 0 }) // All races
+		var sceneA = new ScrollMagic.Scene({ triggerElement:'#trigger1', offset: -(document.documentElement.clientHeight/1.3), triggerHook: 0}) // All races
 				.on('start',function(){
 					plot1.datum(cfData).call(bumpchart
 							 .dimensions(function(d){return d3.keys(d[0]).filter(function(d){return (d == 'black_pct' || d == 'hispanic_pct' || d == 'white_pct');});})
@@ -47,17 +44,8 @@ d3.queue()
 				);
 				d3.select('.highlight').transition().style('background-color','transparent');
 				d3.select('.intro').selectAll('p').transition().style('opacity',1);
+				console.log("Trigger 1");
 		});
-
-		// var sceneB = new ScrollMagic.Scene({ offset: 550, duration: 400 })
-		// 		.on('start',function(){
-		// 			plot1.datum(cfData).call(bumpchart
-		// 					 .dimensions(function(d){return d3.keys(d[0]).filter(function(d){return (d == 'black_pct_diff' || d == 'hispanic_pct_diff' || d == 'white_pct_diff');});})
-		// 					 .Xdomain([0,3.5])
-		// 					 //.formatPercent(function(x){return d3.format('+.0%')(x-1);})
-		// 					 .setTickValues([0,3.5])
-		// 				);
-		// 		});
 
 		var sceneB = new ScrollMagic.Scene({ triggerElement:'#trigger2', offset: -(document.documentElement.clientHeight/1.3), triggerHook: 0, reverse: true}) // All races - charter schools
 				.on('start',function(){

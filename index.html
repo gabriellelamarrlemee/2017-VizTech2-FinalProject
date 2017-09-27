@@ -4,7 +4,7 @@
 		<meta charset='utf-8'>
 		<script src="https://use.typekit.net/adu0wxt.js"></script>
 		<script>try{Typekit.load({ async: true });}catch(e){}</script>
-		<link href='lib/bootstrap-3.3.7-dist/css/bootstrap.min.css' rel='stylesheet' />
+		<link href='./lib/bootstrap-3.3.7-dist/css/bootstrap.min.css' rel='stylesheet' />
 		<link href='global.css' rel='stylesheet' />
 	</head>
 	<body>
@@ -91,8 +91,8 @@
 
 			<div class="row">
 
-			<div class="col-sm-7 col-md-7 col-lg-7">
-				<div class="plot affix-top" id="plot1" data-spy="affix"></div>
+			<div class="plot col-sm-7 col-md-7 col-lg-7">
+				<div class="plot col-sm-12 col-md-12 col-lg-12" id="plot1" data-spy="affix" data-offset-top="600"></div>
 			</div>
 			<div class="plot col-sm-1 col-md-1 col-lg-1" id="column-break"></div>
 
@@ -195,15 +195,16 @@
 			</div>
 
 		</div>
-		<script src='lib/d3.js' type='text/javascript'></script>
-		<script src='lib/crossfilter/crossfilter.js'></script>
-		<script src='lib/jquery/jquery-1.12.4.min.js'></script>
-		<script src='lib/scrollmagic/minified/ScrollMagic.min.js'></script>
-		<script src='lib/bootstrap-3.3.7-dist/js/bootstrap.min.js'></script>
+		<script src='./lib/d3.js' type='text/javascript'></script>
+		<script src='./lib/crossfilter/crossfilter.js'></script>
+		<script src='./lib/jquery/jquery-1.12.4.min.js'></script>
+		<script src='./lib/scrollmagic/minified/ScrollMagic.min.js'></script>
+		<script src='./lib/bootstrap-3.3.7-dist/js/bootstrap.min.js'></script>
+		<script src='./lib/bootstrap-3.3.7-dist/js/affix.js'></script>
 
 		<!--include modules-->
 
-		<script src='modules/Bumpchart.js'></script>
+		<script src='./modules/Bumpchart.js'></script>
 		<!-- <script src='./modules/treemap.js'></script> -->
 		<!-- <script src='modules/menu_name.js'></script>
 		<script src='modules/menu_type.js'></script>

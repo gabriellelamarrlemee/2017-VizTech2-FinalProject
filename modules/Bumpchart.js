@@ -8,7 +8,6 @@ function Bumpchart(){
       formatPercent = d3.format('.0%'),
       setTickValues = [0,.25,.5,.75,1],
       //formatPercent = function(x){return d3.format('+.0%')(x-1);},
-      // dimensions = function(d){return d3.keys(d[0]).filter(function(d){return (d == 'asian_pct' || d == 'black_pct' || d == 'hispanic_pct' || d == 'white_pct') && (x[d] = d3.scaleLinear().domain([0,1]).range([70,w]));});};
       dimensions = function(d){return d3.keys(d[0]).filter(function(d){return (d == 'asian_pct' || d == 'black_pct' || d == 'hispanic_pct' || d == 'white_pct');});};
 
   //Scales etc.
@@ -20,8 +19,16 @@ function Bumpchart(){
   var exports = function(selection){
     var data = selection.datum();
 
+    // console.log(data);
+
     w = w || selection.node().clientWidth - m.l - m.r;
     h = h || selection.node().clientHeight - m.t - m.b;
+
+    // console.log(selection);
+    // console.log(selection.node());
+    // console.log(w);
+    // console.log(h);
+
 
     //scales for the bump chart
     var y = d3.scalePoint().range([0,h]);
@@ -105,6 +112,9 @@ function Bumpchart(){
     var plot = svgEnter.merge(svg)
         .select('.canvas')
         .attr('transform','translate('+ m.l+','+ m.t+')');
+
+    console.log(w);
+    console.log(selection)
 
     //background lines -- ** maybe these shouldn't update???
     var lines = plot.selectAll('.background').data(data);
