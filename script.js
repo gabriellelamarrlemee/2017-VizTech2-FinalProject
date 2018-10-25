@@ -16,12 +16,9 @@ d3.queue()
 
 		var cfData = schoolsByName.top(Infinity);
 
-		//benchmark numbers **TO DO: Add in a median line**
+		//benchmark numbers
 		var avgStudents = d3.mean(data,function(d) {return d.students}),
-				medianStudents = d3.median(data,function(d){return d.students})
-				// avgRating = /*fill with correct info*/,
-				// avgProbationStatus = /*fill with correct info*/,
-				;
+				medianStudents = d3.median(data,function(d){return d.students});
 
 		var bumpchart = Bumpchart();
 		var plot1 = d3.select('#plot1');
@@ -32,8 +29,6 @@ d3.queue()
 				top: $('#plot1').offset().top
 			}
 		});
-
-		//d3.select('#plot1').datum(cfData).call(bumpchart);
 
 		var sceneA = new ScrollMagic.Scene({ triggerElement:'#trigger1', offset: -(document.documentElement.clientHeight/1.3), triggerHook: 0}) // All races
 				.on('start',function(){
@@ -213,7 +208,6 @@ d3.queue()
 
 
 		var buttons = d3.selectAll('.btn-group');
-		//.buttons.select('.school-type-btn').datum(schoolsByType).call(TypeButton);
 
 		buttons.selectAll('.school-type-btn').on('click',function(){
 			console.log(this);
@@ -280,11 +274,6 @@ d3.queue()
 function parseData(d){
 	return {
 		name:d.name,
-		//street_address:d.street_address,
-		//city:d.city,
-		//state:d.state,
-		//zip:d.zip,
-		//id:d.id?d.id:undefined,
 		grades:d.grades,
 		type:d.type,
 		students:+d.students,
@@ -301,7 +290,5 @@ function parseData(d){
 		mobility_rate_pct:d.mobility_rate?+d.mobility_rate:undefined,
 		students_cat:d.students_cat,
 		grades_cat:(d.grades_cat).split(',')
-		//chronic_truancy_pct:+d.chronic_truancy
-
 	}
 }

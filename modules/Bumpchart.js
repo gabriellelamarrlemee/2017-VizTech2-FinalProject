@@ -7,7 +7,6 @@ function Bumpchart(){
       Xdomain = [0,1],
       formatPercent = d3.format('.0%'),
       setTickValues = [0,.25,.5,.75,1],
-      //formatPercent = function(x){return d3.format('+.0%')(x-1);},
       dimensions = function(d){return d3.keys(d[0]).filter(function(d){return (d == 'asian_pct' || d == 'black_pct' || d == 'hispanic_pct' || d == 'white_pct');});};
 
   //Scales etc.
@@ -19,22 +18,14 @@ function Bumpchart(){
   var exports = function(selection){
     var data = selection.datum();
 
-    // console.log(data);
 
     w = w || selection.node().clientWidth - m.l - m.r;
     h = h || selection.node().clientHeight - m.t - m.b;
-
-    // console.log(selection);
-    // console.log(selection.node());
-    // console.log(w);
-    // console.log(h);
-
 
     //scales for the bump chart
     var y = d3.scalePoint().range([0,h]);
         x = d3.scaleLinear().domain(Xdomain).range([70,w]);
 
-    //console.log(data);
     scaleColor.domain(['small','medium','large','extra-large']);
 
     //line generator
@@ -94,8 +85,6 @@ function Bumpchart(){
       mobility_rate_pct:avgMobilityRate
     });
 
-    //dimensions = d3.keys(data[0]).filter(function(d){return d == 'asian_pct' || d == 'black_pct' || d == 'hispanic_pct' || d == 'white_pct'});
-
     dimensionsData = dimensions(data);
     y.domain(dimensionsData);
 
@@ -113,10 +102,7 @@ function Bumpchart(){
         .select('.canvas')
         .attr('transform','translate('+ m.l+','+ m.t+')');
 
-    console.log(w);
-    console.log(selection)
-
-    //background lines -- ** maybe these shouldn't update???
+    //background lines
     var lines = plot.selectAll('.background').data(data);
     var linesEnter = lines.enter().append('g').attr('class','background');
     linesEnter.append('path').attr('class','background-line');
@@ -137,171 +123,10 @@ function Bumpchart(){
         .style('stroke-width',1);
     var topLinesExit = topLines.exit().transition().delay(function(d,i){return i*2}).remove();
 
-    // var lineTarget = topLinesUpdate.append('g').attr('class','foreground-line-target');
-
-
-    // *** TEST VORONOI SECTION
-  //   var voronoi = d3.voronoi()
-  //       // .x(function(d){ return dimensionsData.map(function(p){ return x(d[p]); }); })
-  //       // .y(function(d){ return dimensionsData.map(function(p){ return y(p); }); })
-  //       .extent([[70, 0], [w, h]]);
-  //
-  //   // var focus = plot.append('g')
-  //   //     .attr('transform','translate(-100,100)')
-  //   //     .attr('class','focus');
-  //   // focus.append('circle').attr('r',3.5);
-  //
-  //   var voronoiGroup = plot.selectAll('.voronoi')
-  //       .data(voronoi(sample(topLinesUpdate.nodes())));
-  //   var voronoiGroupEnter = voronoiGroup.enter().append('g').attr('class','voronoi');
-  //   voronoiGroupEnter.append('circle').attr('r',3.5);
-  //   voronoiGroupEnter.append('path');
-  //   voronoiGroup.select("circle").attr("transform", function(d) { return "translate(" + d.point + ")"; });
-  //   voronoiGroup.select("path").attr("d", function(d) { return "M" + d.join("L") + "Z"; });
-  //   var voronoiGroupExit = voronoiGroup.exit().remove();
-  //
-  //   function sample(pathNode){
-  //     console.log(pathNode);
-  //     var pathLength = pathNode.getTotalLength(),
-  //         samples = [];
-  //     for (var sample, sampleLength = 0; sampleLength <= pathLength; sampleLength += 2) {
-  //       sample = pathNode.getPointAtLength(sampleLength);
-  //       samples.push([sample.x, sample.y]);
-  //   }
-  //   return samples;
-  // }
-  //
-  //   // voronoiGroup.selectAll('.foreground-line')
-  //   //     .data(voronoi(sample(path.node(), precision))/*voronoi.polygons(d3.merge(dimensionsData.map(function(d){ return d.values; })))*/)
-  //   //     .enter().append('path')
-  //   //     .attr('d',function(d){ return d ? 'M' + d.join('L') + 'Z' : null; })
-  //   //     .on('mouseover',mouseover)
-  //   //     .on('mouseout',mouseout);
-  //
-  //   function mouseover(d){
-  //       console.log('mousover');
-  //   }
-  //
-  //   function mouseout(d){
-  //       console.log('mouseout');
-  //   }
-    // ***
-
-    // *** TEST VORONOI SECTION *** Probably need to add css
-
-    // //Voroni hover effect
-    // var formatPrecision = d3.format('.2f');
-    //
-    // var voronoi = d3.voronoi().extent([[70, 0], [w, h]]);
-    // var cell = plot.append('g').attr('class','voronoi').selectAll('.voronoi');
-    // var output = d3.select('output');
-    // var input = d3.select('input')
-    // .each(function() { var d = [+this.min, +this.max]; x.domain(d).range(d); resample(x(this.value = x.invert(8))); })
-    // .on("input", function() { resample(x(+this.value)); });
-    //
-    // function resample(precision) {
-    //   output.text(formatPrecision(precision));
-    //   cell = cell.data(voronoi(sample(topLines.node(), precision)));
-    //   cell.exit().remove();
-    //   var cellEnter = cell.enter().append("g");
-    //   cellEnter.append("circle").attr("r", 3.5);
-    //   cellEnter.append("path");
-    //   cell.select("circle").attr("transform", function(d) { return "translate(" + d.point + ")"; });
-    //   cell.select("path").attr("d", function(d) { return "M" + d.join("L") + "Z"; });
-    // }
-    //
-    // function sample(pathNode, precision) {
-    //   var pathLength = pathNode.getTotalLength(),
-    //     samples = [];
-    //   for (var sample, sampleLength = 0; sampleLength <= pathLength; sampleLength += precision) {
-    //     sample = pathNode.getPointAtLength(sampleLength);
-    //     samples.push([sample.x, sample.y]);
-    //   }
-    //   return samples;
-    // }
-    //
-    // // ***
-
-
-
-    // *** TEST FIND CLOSEST POINT SECTION ***
-    // svg.on('mousemove',mousemoved);
-    // var newLine = svg.append('line')
-    //     .style('stroke','red')
-    //     .style('stroke-weight',1);
-    // var circle = svg.append('circle')
-    //     .attr('cx',0)
-    //     .attr('cy',0)
-    //     .attr('r',3.5);
-    //
-    // function mousemoved() {
-    //   console.log(topLines.selectAll('.foreground-line').nodes());
-    //   console.log(topLines.selectAll('.foreground-line'));
-    //   var m = d3.mouse(this),
-    //       p = closestPoint(topLines.selectAll('.foreground-line').nodes(), m);
-    //   console.log('m: '+m+', '+'p: '+p);
-    //   newLine.attr("x1", p[0]).attr("y1", p[1]).attr("x2", m[0]).attr("y2", m[1]);
-    //   circle.attr("cx", p[0]).attr("cy", p[1]);
-    // }
-    //
-    // function closestPoint(pathNode, point) {
-    //   console.log(pathNode);
-    //   pathNode.forEach(function(element){
-    //       var pathLength = element.getTotalLength(),
-    //           precision = 8,
-    //           best,
-    //           bestLength,
-    //           bestDistance = Infinity;
-    //           console.log('pathLength:'+pathLength);
-    //
-    //       // linear scan for coarse approximation
-    //       for (var scan, scanLength = 0, scanDistance; scanLength <= pathLength; scanLength += precision) {
-    //         if ((scanDistance = distance2(scan = element.getPointAtLength(scanLength))) < bestDistance) {
-    //           best = scan, bestLength = scanLength, bestDistance = scanDistance;
-    //         }
-    //       }
-    //       console.log('bestLength:'+bestLength);
-    //
-    //       // binary search for precise estimate
-    //       precision /= 2;
-    //       while (precision > 0.5) {
-    //         var before, after, beforeLength, afterLength, beforeDistance, afterDistance;
-    //         if ((beforeLength = bestLength - precision) >= 0 && (beforeDistance = distance2(before = element.getPointAtLength(beforeLength))) < bestDistance) {
-    //           best = before, bestLength = beforeLength, bestDistance = beforeDistance;
-    //         } else if ((afterLength = bestLength + precision) <= pathLength && (afterDistance = distance2(after = element.getPointAtLength(afterLength))) < bestDistance) {
-    //           best = after, bestLength = afterLength, bestDistance = afterDistance;
-    //         } else {
-    //           precision /= 2;
-    //         }
-    //       }
-    //
-    //       best = [best.x, best.y];
-    //       console.log('best:'+best);
-    //       best.distance = Math.sqrt(bestDistance);
-    //       console.log(bestDistance);
-    //       return best;
-    //
-    //       function distance2(p) {
-    //         var dx = p.x - point[0],
-    //             dy = p.y - point[1];
-    //         // console.log('pointX:'+point[0]+', pointY:'+point[1]);
-    //         // console.log('dx:'+dx+', dy:'+dy);
-    //         return dx * dx + dy * dy;
-    //       }
-    //
-    //   })
-    // };
-    // ****
-
-    // d3.selectAll('.foreground-line-target')
-    //   .on('mouseenter',function(d){
-    //     console.log(this);
-    //   });
 
     //add school line hover effect
     d3.selectAll('.foreground-line')
     .on('mouseover',function(d){
-      //d3.selectAll('.foreground-line').transition().style('stroke-opacity',.05);
       var select = d3.select(this);
       select.style('stroke-opacity',1).style('stroke-width',5);
 
@@ -389,19 +214,6 @@ function Bumpchart(){
       tooltip.transition().style('opacity',0);
     });
 
-
-    // Countrywide mean line
-    // var avgCountryLine = plot.selectAll('.country_average').data(country_average);
-    // var avgCountryEnter = avgCountryLine.enter()
-    //     .append('g')
-    //     .attr('class','country_average');
-    // avgCountryEnter.append('path').attr('class','country_average-line');
-    // var avgCountryUpdate = avgCountryLine.merge(avgCountryEnter)
-    //     .select('.country_average-line').attr('d',path)
-    //     .style('stroke','black').style('stroke-width','2px')
-    //     .style("stroke-dasharray", ("8, 3"));
-
-
     //add a group element for each dimension
     var g = plot.selectAll('.dimension')
         .data(dimensionsData);
@@ -444,8 +256,6 @@ function Bumpchart(){
       topLines.attr('d',path);
       dimensionsData.sort(function(a,b){return position(a) - position(b);});
       y.domain(dimensionsData);
-      // dimensionsData.sort(function(a,b){return position(a) - position(b);});
-      // y.domain(dimensionsData);
       gUpdate.attr('transform', function(d){return 'translate('+ 0 + ',' + position(d) + ')';});
     }
 
@@ -481,7 +291,6 @@ function Bumpchart(){
 
     // Add and store a brush for each axis
     g.append('g')
-        // .attr('class', 'brush '+d)
         .each(function(d){
           d3.select(this).attr('class', 'brush '+d).call(brush.extent([[70,-8],[w,10]])); })
         .selectAll('rect')
@@ -491,13 +300,9 @@ function Bumpchart(){
     function brush() {
       var thisBrush = d3.select(this.parentNode);
       var thisDimension = thisBrush.select('text').data()[0];
-      console.log(thisDimension);
       var actives = dimensionsData.filter(function(d){ console.log(d); return d == thisDimension;}),
           extents = actives.map(function(p) { return d3.event.selection; });
-      console.log('actives: '+ actives);
-      console.log('extents: '+ extents);
 
-      // *** this is only doing one brush at a time. make each axis have its own brush! ***
       d3.selectAll('.foreground-line').style('display',function(d){
         return actives.every(function(p,i){
           return extents[i][0] <= x(d[p]) && x(d[p]) <= extents[i][1];
@@ -505,48 +310,6 @@ function Bumpchart(){
       });
     }
 
-
-    // var brush = d3.brushX().on('brush',brush);
-
-    // var brush = d3.brushX().on('brush',function(d){
-    //     var thisBrush = d3.select(this.parentNode);
-    //     var thisDimension = thisBrush.select('text').data()[0];
-    //     console.log(thisDimension);
-    //     var actives = dimensionsData.filter(function(d){ return d == thisDimension;}),
-    //         //actives = dimensionsData.filter(function(d){ console.log(d); return !brush.empty();}),
-    //         extents = actives.map(function(p) { return d3.event.selection; });
-    //     console.log('actives: '+ actives);
-    //     console.log('extents: '+ extents);
-    //
-    //     // *** this is only doing one brush at a time. make each axis have its own brush! ***
-    //     d3.selectAll('.foreground-line').style('display',function(d){
-    //       return actives.every(function(p,i){
-    //         return extents[i][0] <= x(d[p]) && x(d[p]) <= extents[i][1];
-    //       }) ? null:'none';
-    //     });
-    // })
-    // //
-    // gEnter.append('g')
-    //     .each(function(d){
-    //       d3.select(this).attr('class', 'brush '+d).call(brush.extent([[0,0],[w,h]])); });
-    //
-    // // Handles a brush event, toggling the display of foreground lines.
-    // function brush() {
-    //   var thisBrush = d3.select(this.parentNode);
-    //   var thisDimension = thisBrush.select('text').data()[0];
-    //   // console.log(thisDimension);
-    //   var actives = dimensionsData.filter(function(d){ return d == thisDimension;}),
-    //       //actives = dimensionsData.filter(function(d){ console.log(d); return !brush.empty();}),
-    //       extents = actives.map(function(p) { return d3.event.selection; });
-    //   console.log('actives: '+ actives);
-    //   console.log('extents: '+ extents);
-    //
-    //   d3.selectAll('.foreground-line').style('display',function(d){
-    //     return actives.every(function(p,i){
-    //       return extents[i][0] <= x(d[p]) && x(d[p]) <= extents[i][1];
-    //     }) ? null:'none';
-    //   });
-    // }
 
 
   }
@@ -575,6 +338,5 @@ function Bumpchart(){
     return this;
   }
 
-  console.log('Returning exports');
   return exports;
 }
